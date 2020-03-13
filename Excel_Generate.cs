@@ -23,9 +23,10 @@ namespace For_Excel
             Excel_WS1 = Excel_WB1.Worksheets[1];
             Excel_WS1.Name = "random";
             //record the titles
-            Excel_App1.Cells[1, 1] = "Date";
-            Excel_App1.Cells[1, 2] = "Recorder";
-            Excel_App1.Cells[1, 3] = "Temperature";
+            Excel_App1.Cells[1, 1] = "Record Date";
+            Excel_App1.Cells[1, 2] = "Fridge1";
+            Excel_App1.Cells[1, 3] = "Fridge2";
+            Excel_App1.Cells[1, 4] = "Recorder";
             //datetime setting
             DateTime startdte = new DateTime(2019, 10, 1);
             DateTime enddte = new DateTime(2020, 4, 1);
@@ -37,7 +38,7 @@ namespace For_Excel
             //double randnum = NextDouble(rnd, 1, 4.5, 1);
             for (int i=2; i <= days; i++)
             {
-                for (int j = 1; j <= 3; j++)
+                for (int j = 1; j <= 4; j++)
                 {
                     switch (j) 
                     {
@@ -46,10 +47,13 @@ namespace For_Excel
                             startdte = startdte.AddDays(1);
                             break;
                         case 2:
-                            Excel_App1.Cells[i, j] = Convert.ToString(GetRandom(recorder));
+                            Excel_App1.Cells[i, j] = Convert.ToString(NextDouble(rnd,1,4.5,1) +"°C");
                             break;
                         case 3:
-                            Excel_App1.Cells[i, j] = Convert.ToString(NextDouble(rnd,1,4.5,1) +"°C");
+                            Excel_App1.Cells[i, j] = Convert.ToString(NextDouble(rnd, 1, 4.5, 1) + "°C");
+                            break;
+                        case 4:
+                            Excel_App1.Cells[i, j] = Convert.ToString(GetRandom(recorder));
                             break;
 
                     }
